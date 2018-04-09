@@ -1,0 +1,56 @@
+<%= form_for @document, :html => { :class => "form-horizontal document" } do |f| %>
+
+  <% if @document.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @document.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :document, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.file_field :document, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:document) %>
+  </div>
+
+<hr>
+<h2>Select Project</h2>
+<hr>
+  <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+
+          <%= f.collection_check_boxes :project_ids, Project.all, :id, :group_number do |cb| %>
+            <% cb.label(class: "checkbox input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>  
+        </div>
+      </div>
+   </div>
+
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                documents_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

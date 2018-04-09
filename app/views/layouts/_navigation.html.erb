@@ -1,0 +1,35 @@
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="row">
+        <div class="col-sm-1">
+        <%= link_to "Testapp", root_path, class: "navbar-brand", id: "logo", style: 'color:#ffffff;' %></a>
+        </div>
+        <div class="col-sm-1 navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Project<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All Projects", projects_path %></li>
+            
+              <li><%= link_to "New Project", new_project_path %></li>
+            
+           </ul>
+          </ul>
+        </div>
+
+     
+
+        <div align="right" class="col-sm-offset-9 col-sm-1 navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i align="right" class="glyphicon glyphicon-tasks"></i></a>
+            
+            <ul class="dropdown-menu">
+              <li><%= link_to "Tasks", tasks_path %></li>
+              <li><%= link_to "Products", products_path %></li>
+           </ul>
+           
+          </ul>
+        </div>
+       
+      </div>
+    </div>

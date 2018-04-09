@@ -1,0 +1,114 @@
+<%= form_for @project, :html => { :class => "form-horizontal project" } do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<h2> Group Information </h2>
+<hr>
+  <div class="form-group">
+    <%= f.label :group_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :group_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:group_number) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :effective_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.date_field :effective_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:effective_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :group_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :group_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:group_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :locations, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :locations, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:locations) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :estimated_employees, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :estimated_employees, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:estimated_employees) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :deductible, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :deductible, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:deductible) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :eligibility, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :eligibility, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:eligibility) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :term_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :term_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:term_date) %>
+  </div>
+
+
+<hr>
+<h2>Product Infomration</h2>
+<hr>
+      <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+
+          <%= f.collection_check_boxes :product_ids, Product.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>  
+        </div>
+      </div>
+   </div>
+
+
+<hr>
+<h2>Tasks (Mark when Complete)</h2>
+<hr>
+      <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+
+          <%= f.collection_check_boxes :task_ids, Task.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>  
+        </div>
+      </div>
+   </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-success' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn btn-danger', style: 'color:#ffffff;' %>
+    </div>
+  </div>
+</div>
+<% end %>

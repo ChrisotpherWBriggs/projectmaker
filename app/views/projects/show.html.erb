@@ -1,0 +1,43 @@
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:group_number) %>:</strong></dt>
+  <dd><%= @project.group_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:effective_date) %>:</strong></dt>
+  <dd><%= @project.effective_date.strftime('%m / %d / %Y') %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:group_name) %>:</strong></dt>
+  <dd><%= @project.group_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:locations) %>:</strong></dt>
+  <dd><%= @project.locations %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:estimated_employees) %>:</strong></dt>
+  <dd><%= @project.estimated_employees %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:deductible) %>:</strong></dt>
+  <dd><%= number_to_currency(@project.deductible) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:eligibility) %>:</strong></dt>
+  <dd><%= @project.eligibility %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:term_date) %>:</strong></dt>
+  <dd><%= @project.term_date %></dd>
+  <hr>
+  <dt><strong>Products:</strong></dt>
+  <dd><%= render @project.products  %></dd>
+  <hr>
+  <dt><strong>Completed Tasks:</strong></dt>
+  <dd><%= render @project.tasks %></dd>
+  <hr>
+  <dt><srtong>Documents:</srtong></dt>
+  <dd><%= render @project.documents %></dd>
+  <dd><%=link_to "Upload Documents", new_document_path, class: "btn btn-success", style: "color:#ffffff;" %>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger', style: 'color:#ffffff;' %>

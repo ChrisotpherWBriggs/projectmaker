@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_numner: MyString
+  effective_date: 2018-04-09
+  group_name: MyString
+  locations: MyString
+  deductable: MyString
+  eligibility: MyString
+  term_date: 1
+
+two:
+  group_numner: MyString
+  effective_date: 2018-04-09
+  group_name: MyString
+  locations: MyString
+  deductable: MyString
+  eligibility: MyString
+  term_date: 1
