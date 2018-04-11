@@ -2,6 +2,8 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+<%= render 'projects/new_email' %>
+
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:group_number) %>:</strong></dt>
@@ -20,6 +22,36 @@
   <dd><%= @project.eligibility %></dd>
   <dt><strong><%= model_class.human_attribute_name(:term_date) %>:</strong></dt>
   <dd><%= @project.term_date %></dd>
+  <hr>
+  <% if @project.to_group? %>
+  <dt><strong>ID Card to:</strong></dt>
+  <dd><h4 class="text-success bg-success"><strong>Group</strong></h4></dd>
+  <% end %>
+  <% if @project.to_employees? %>
+  <dt><strong>Id Card to:</strong></dt>
+  <dd><h4 class="text-danger bg-danger"><strong>Employees</strong></h4></dd>
+  <% end %>
+  
+  <% if @project.logo? %>
+  <dt><strong>Logo:</strong></dt>
+  <dd><h4 class="text-success bg-success"><strong>Logo Uploaded</strong></h4></dd>
+  <% end %>
+  <% if @project.no_logo? %>
+  <dt><strong>Logo:</strong></dt>
+  <dd><h4 class="text-danger bg-danger"><strong>No Logo</strong></h4></dd>
+  <% end %>
+
+  <% if @project.elig_now? %>
+  <dt><strong>ID Card to:</strong></dt>
+  <dd><h4 class="text-success bg-success"><strong>Eligibility uploaded</strong></h4></dd>
+  <% end %>
+  <% if @project.elig_later? %>
+  <dt><strong>Id Card to:</strong></dt>
+  <dd><h4 class="text-danger bg-danger"><strong>Eligibility with be Uploaded Later</strong></h4></dd>
+  <% end %>
+  <hr>
+  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
+  <dd><%= @project.notes %></dd>
   <hr>
   <dt><strong>Products:</strong></dt>
   <dd><%= render @project.products  %></dd>
