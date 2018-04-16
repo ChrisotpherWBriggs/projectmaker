@@ -1,0 +1,6 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com, jgorman@mcoa.com", subject: "Fax Back has been created forgroup #{@project.group_number} - #{@project.group_name}", 
+            body: "Fax Back has been created and uploaded into the database for group #{@project.group_number} - #{@project.group_name}, and the Plan is built in the System.  Information Uploaded to the web." do %>
+  <button class="btn btn-success"><strong>Fax Back Notice</strong></button>
+<% end %>
+</div>

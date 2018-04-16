@@ -14,6 +14,7 @@
       </div>
     </div>
   <% end %>
+<% if current_user.admin? %>
 <h2> Group Information </h2>
 <hr>
   <div class="form-group">
@@ -37,6 +38,13 @@
     </div>
     <%=f.error_span(:group_name) %>
   </div>
+ <div class="form-group">
+    <%= f.label :brokername, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :brokername, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:brokername) %>
+  </div>  
   <div class="form-group">
     <%= f.label :locations, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -102,6 +110,13 @@
       <strong>Eligibility Will Be Uploaded Later: </strong><%= f.check_box :elig_later, :class => 'checkbox checkbox-inline' %>
     </div>
   </div>
+    <div class="form-group">
+    <%= f.label :id_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.date_field :id_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:id_date) %>
+  </div>
 
 <hr>
   <div class="form-group">
@@ -128,6 +143,7 @@
 
 
 <hr>
+<% end %>
 <h2>Tasks (Mark when Complete)</h2>
 <hr>
       <div class="form-group">

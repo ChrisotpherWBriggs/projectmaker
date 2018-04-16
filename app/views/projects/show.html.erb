@@ -1,75 +1,148 @@
-<%- model_class = Project -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="row">
+  <div class="col-md-9" style="border-right: thin outset black">
+    <%- model_class = Project -%>
+    <div class="page-header">
+      <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+    </div>
+
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:group_number) %>:</strong></dt>
+      <dd><%= @project.group_number %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:effective_date) %>:</strong></dt>
+      <dd><%= @project.effective_date.strftime('%m / %d / %Y') %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:group_name) %>:</strong></dt>
+      <dd><%= @project.group_name %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:brokername) %>:</strong></dt>
+      <dd><%= @project.brokername %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:locations) %>:</strong></dt>
+      <dd><%= @project.locations %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:estimated_employees) %>:</strong></dt>
+      <dd><%= @project.estimated_employees %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:deductible) %>:</strong></dt>
+      <dd><%= number_to_currency(@project.deductible) %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:eligibility) %>:</strong></dt>
+      <dd><%= @project.eligibility %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:term_date) %>:</strong></dt>
+      <dd><%= @project.term_date %></dd>
+      <hr>
+      <% if @project.to_group? %>
+      <dt><strong>ID Card to:</strong></dt>
+      <dd><h4 class="text-success bg-success"><strong>Group</strong></h4></dd>
+      <% end %>
+      <% if @project.to_employees? %>
+      <dt><strong>Id Card to:</strong></dt>
+      <dd><h4 class="text-danger bg-danger"><strong>Employees</strong></h4></dd>
+      <% end %>
+      
+      <% if @project.logo? %>
+      <dt><strong>Logo:</strong></dt>
+      <dd><h4 class="text-success bg-success"><strong>Logo Uploaded</strong></h4></dd>
+      <% end %>
+      <% if @project.no_logo? %>
+      <dt><strong>Logo:</strong></dt>
+      <dd><h4 class="text-danger bg-danger"><strong>No Logo</strong></h4></dd>
+      <% end %>
+
+      <% if @project.elig_now? %>
+      <dt><strong>ID Card to:</strong></dt>
+      <dd><h4 class="text-success bg-success"><strong>Eligibility uploaded</strong></h4></dd>
+      <% end %>
+      <% if @project.elig_later? %>
+      <dt><strong>Id Card to:</strong></dt>
+      <dd><h4 class="text-danger bg-danger"><strong>Eligibility with be Uploaded Later</strong></h4></dd>
+      <% end %>
+      <dt><strong>Id Send Date:</strong></dt>
+      <dd><h4 class="text-primary bg-info"><%= @project.id_date.strftime('%m / %d / %Y') %></h4></dd>
+      <hr>
+      <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
+      <dd><%= @project.notes %></dd>
+      <hr>
+      <dt><strong>Products:</strong></dt>
+      <dd><%= render @project.products  %></dd>
+      <hr>
+      <dt><strong>Completed Tasks:</strong></dt>
+      <dd><%= render @project.tasks %></dd>
+
+      <% if current_user.email != "ronnie@example.com" %>
+      <hr>
+      <dt><srtong>Documents:</srtong></dt>
+      <dd><%= render @project.documents %></dd>
+      <dd><%=link_to "Upload Documents", new_document_path, class: "btn btn-success", style: "color:#ffffff; font-weight: bold;" %>
+      <% end %>
+    </dl>
+
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                  projects_path, :class => 'btn btn-primary', style: 'color:#ffffff;'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_project_path(@project), :class => 'btn btn-warning', style: 'color:#000000;' %>
+    <% if current_user.admin? %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  project_path(@project),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger', style: 'color:#ffffff;' %>
+    <% end %>
+  </div>
+  <div class="col-md-3" style="padding-bottom: 10px;">
+    <h3 class="text-danger bg-danger">Email Notices For Complete Tasks! ( Dont Forget! )</h3>
+    <table>
+      <% if current_user.admin? %>
+      <tr>
+        <td><%= render 'project_mailer/new_email' %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td><%= render 'project_mailer/id_card_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/sbc_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/faxback_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/enrollment_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/product_file_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/form_setup_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/phone_queue_email' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'project_mailer/claim_queue_email' %></td>
+      </tr>
+    </table>
+
+  </div>
+ 
+<hr>
+
+  <div class="col-md-3">
+    <table>
+      <tr>
+        <th class='bg-danger text-danger'><h3>Admin Notifications</h3></th>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/carol' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/jimmy' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/joe' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/julie' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/roney' %></td>
+      </tr>
+      <tr>
+        <td><%= render 'admin_mail/shawndel' %></td>
+      </tr>
+    </table>
 </div>
-<%= render 'projects/new_email' %>
-
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:group_number) %>:</strong></dt>
-  <dd><%= @project.group_number %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:effective_date) %>:</strong></dt>
-  <dd><%= @project.effective_date.strftime('%m / %d / %Y') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:group_name) %>:</strong></dt>
-  <dd><%= @project.group_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:locations) %>:</strong></dt>
-  <dd><%= @project.locations %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:estimated_employees) %>:</strong></dt>
-  <dd><%= @project.estimated_employees %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:deductible) %>:</strong></dt>
-  <dd><%= number_to_currency(@project.deductible) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:eligibility) %>:</strong></dt>
-  <dd><%= @project.eligibility %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:term_date) %>:</strong></dt>
-  <dd><%= @project.term_date %></dd>
-  <hr>
-  <% if @project.to_group? %>
-  <dt><strong>ID Card to:</strong></dt>
-  <dd><h4 class="text-success bg-success"><strong>Group</strong></h4></dd>
-  <% end %>
-  <% if @project.to_employees? %>
-  <dt><strong>Id Card to:</strong></dt>
-  <dd><h4 class="text-danger bg-danger"><strong>Employees</strong></h4></dd>
-  <% end %>
-  
-  <% if @project.logo? %>
-  <dt><strong>Logo:</strong></dt>
-  <dd><h4 class="text-success bg-success"><strong>Logo Uploaded</strong></h4></dd>
-  <% end %>
-  <% if @project.no_logo? %>
-  <dt><strong>Logo:</strong></dt>
-  <dd><h4 class="text-danger bg-danger"><strong>No Logo</strong></h4></dd>
-  <% end %>
-
-  <% if @project.elig_now? %>
-  <dt><strong>ID Card to:</strong></dt>
-  <dd><h4 class="text-success bg-success"><strong>Eligibility uploaded</strong></h4></dd>
-  <% end %>
-  <% if @project.elig_later? %>
-  <dt><strong>Id Card to:</strong></dt>
-  <dd><h4 class="text-danger bg-danger"><strong>Eligibility with be Uploaded Later</strong></h4></dd>
-  <% end %>
-  <hr>
-  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
-  <dd><%= @project.notes %></dd>
-  <hr>
-  <dt><strong>Products:</strong></dt>
-  <dd><%= render @project.products  %></dd>
-  <hr>
-  <dt><strong>Completed Tasks:</strong></dt>
-  <dd><%= render @project.tasks %></dd>
-  <hr>
-  <dt><srtong>Documents:</srtong></dt>
-  <dd><%= render @project.documents %></dd>
-  <dd><%=link_to "Upload Documents", new_document_path, class: "btn btn-success", style: "color:#ffffff;" %>
-</dl>
-
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              projects_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_path(@project), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              project_path(@project),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger', style: 'color:#ffffff;' %>

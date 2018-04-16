@@ -1,0 +1,7 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com, jmilioto@mcoa.com", subject: " Tasks not complete for group #{@project.group_number} - #{@project.group_name}", 
+            body: "Joe,
+            	You have tasks that are not complete for group #{@project.group_number} - #{@project.group_name}.  Please complete your tasks as soon as possible." do %>
+  <button class="btn btn-success"><strong>Joe</strong></button>
+<% end %>
+</div>

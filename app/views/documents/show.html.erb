@@ -14,8 +14,10 @@
               documents_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_document_path(@document), :class => 'btn btn-default' %>
+<% if current_user.admin? %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               document_path(@document),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+<% end %>

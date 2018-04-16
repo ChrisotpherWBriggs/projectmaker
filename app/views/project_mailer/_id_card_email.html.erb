@@ -1,0 +1,8 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com, skelley@mcoa.com", subject: "Id Card Proofs Are Done for group #{@project.group_number} - #{@project.group_name}", 
+            body: "Id card proofs have been created and uploaded into the database for group #{@project.group_number} - #{@project.group_name}.
+
+                  Shawndel: You can begin Enrollment now" do %>
+  <button class="btn btn-success"><strong>ID Proof Notice</strong></button>
+<% end %>
+</div>

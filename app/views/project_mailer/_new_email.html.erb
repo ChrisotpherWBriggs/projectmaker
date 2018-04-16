@@ -1,0 +1,23 @@
+<div style="float:right;">
+<%= mail_to "cbriggs@mcoa.com, phoward@mcoa.com, ksweeny@mcoa.com, jdee@mcoa.com, jmilioto@mcoa.com, rwilliams@mcoa.com, cdickson@mcoa.com, cjeffries@mcoa.com, skelley@mcoa.com, dimmel@mcoa.com, jgorman@mcoa.com", subject: "New Group #{@project.group_number} - #{@project.group_name}", 
+            body: "A new group has been created.  Please access the database looking for group #{@project.group_number} - #{@project.group_name}.
+            	
+            	Joe: Please Create the ID Card Proof and upload to the database
+            		 If Lab Card is Selected please create one with Lab Card and one Without.  
+            		 Please add the group to the AHDI and Teladoc files if applicable.
+                         Please add the group to the Cigna, and PBM files (Magellan, Optim, Caremark, or ServeYou) if applicable.  
+            		 Please create the fax backs and build the plan in the system. Upload the information to the web and Upload to the database
+
+            	Jimmy: Please Create the SBC, and upload to the database
+
+            	Shawndel: Once Enrollment is recieved, the ID cards can be sent out by #{@project.id_date.strftime('%m / %d / %Y')}.
+            	
+            	Julie: Please create the setup forms for all products selected.
+
+            	Roney: Please inform staff and put in a queue for the phones.
+
+            	Carol: Please inform the staff and create queues for claims.
+            	" do %>
+  <button class="btn btn-success" style="padding-bottom: 5px;"><strong>New Group Email</strong></button>
+<% end %>
+</div>

@@ -1,0 +1,6 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com, phoward@mcoa.com", subject: "Group #{@project.group_number} - #{@project.group_name} added to Product Files",
+            body: "Group #{@project.group_number} - #{@project.group_name}. has been added to the files for all aplicable products." do %>
+  <button class="btn btn-success"><strong>Product Notice</strong></button>
+<% end %>
+</div>

@@ -1,0 +1,6 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com", subject: "Form Setup is Done for group #{@project.group_number} - #{@project.group_name}", 
+            body: "Form Setup has been created and uploaded into the database for group #{@project.group_number} - #{@project.group_name}." do %>
+  <button class="btn btn-success"><strong>Form Setup Notice</strong></button>
+<% end %>
+</div>

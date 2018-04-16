@@ -1,0 +1,6 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com, jgorman@mcoa.com", subject: "SBC is Done for group #{@project.group_number} - #{@project.group_name}", 
+            body: "SBC has been created and uploaded into the database for group #{@project.group_number} - #{@project.group_name}." do %>
+  <button class="btn btn-success"><strong>SBC Notice</strong></button>
+<% end %>
+</div>

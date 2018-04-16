@@ -1,8 +1,0 @@
-<% if Time.now < @project.created_at + 24.hours %> 
-<div style="float:right;">
-<%= mail_to "cbriggs@mcoa.com, phoward@mcoa.com, ksweeny@mcoa.com, jdee@mcoa.com, jmilioto@mcoa.com, rwilliams@mcoa.com, cdickson@mcoa.com, cjeffries@mcoa.com, skelley@mcoa.com, dimmel@mcoa.com, jgorman@mcoa.com", subject: "Test", 
-            body: "A new group has been created.  Please access the database looking for group #{@project.group_number}" do %>
-  <button class="btn btn-success">Test</button>
-<% end %>
-</div>
-<% end %>

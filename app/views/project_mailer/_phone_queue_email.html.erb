@@ -1,0 +1,6 @@
+<div style="float:right;">
+<%= mail_to "ksweeny@mcoa.com, cdickson@mcoa.com", subject: "Phone Queue setup is Done for group #{@project.group_number} - #{@project.group_name}", 
+            body: "The Phone Queue has been created for group #{@project.group_number} - #{@project.group_name}." do %>
+  <button class="btn btn-success"><strong>Phone Queue Notice</strong></button>
+<% end %>
+</div>
