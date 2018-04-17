@@ -10,6 +10,7 @@ gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
+gem 'nodejs-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
