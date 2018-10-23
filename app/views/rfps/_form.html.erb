@@ -1,0 +1,836 @@
+<%= form_for @rfp, :html => { :class => "form-horizontal rfp" } do |f| %>
+
+  <% if @rfp.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@rfp.errors.count, "error") %> prohibited this rfp from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @rfp.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+      
+    <div>
+      <table>
+        <tr>
+          <td colspan="2">
+           <div class="form-group">
+              <%= f.label :name, :class => 'control-label col-lg-3' %>
+              <div class="col-lg-6">
+                <%= f.text_field :name, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:name) %>
+              </div>
+            </td>
+            <td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              <%= f.label "Prepared By ", :class => 'control-label col-lg-3' %>
+              <div class="col-lg-6">
+                <%= f.text_field :prep, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:prep) %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <%= f.label :carrier, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-6">
+                <%= f.text_field :carrier, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:carrier) %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <div class="form-group">
+              <%= f.label :network, :class => 'control-label col-lg-3' %>
+              <div class="col-lg-6">
+                <%= f.text_field :network, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:network) %>
+            </div>
+          </td>
+          <td>
+              <div class="form-group">
+              <%= f.label :pbm, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-6">
+                <%= f.text_field :pbm, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:pbm) %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <div class="form-group">
+              <%= f.label :eff_date, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-6">
+                <%= f.text_field :eff_date, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:eff_date) %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+  <div class="row">
+  <table>
+    <tr>
+      <th>
+        <h3>In Netowrk</h3>
+      </th>
+      <th>
+        <h3>Out of Network</h3>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Benefit ", :class => 'control-label col-lg-2' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inbenefits, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inbenefits) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Benefit ", :class => 'control-label col-lg-2' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outbenefits, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outbenefits) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Deductable ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :indeductable, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:indeductable) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Deductable ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outdeductable, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outdeductable) %>
+        </div>
+      </td>
+    </tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Coinsurance ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :incoinsurance, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:incoinsurance) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Coinsurance ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outcoinsurance, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outcoinsurance) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Out of Pocket ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inoop, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inoop) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Out of Pocket ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outoop, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outoop) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Office Visit ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inoffice_visit, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inoffice_visit) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Office Visit ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outoffice_visit, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outoffice_visit) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Specialist ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inspecialist, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inspecialist) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Specialist ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outspecialist, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outspecialist) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Lab & X-Ray visit", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inlab_xray, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inlab_xray) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Lab & X-Ray Visit ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outlab_xray, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outlab_xray) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Preventative ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inpreventative, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inpreventative) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Preventative ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outpreventative, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outpreventative) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Teladoc ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inteladoc, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inteladoc) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Teladoc ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outteladoc, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outteladoc) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Urgent Care ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inurgent_care, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inurgent_care) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Urgent Care ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outurgent_care, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outurgent_care) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Prescription ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inprescription, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inprescription) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Prescription ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outprescription, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outprescription) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Emergency Room ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :iner, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:iner) %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+        <%= f.label "Emergency Room ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :outer, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:outer) %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<br>
+<hr/>
+<br>
+  <table>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Administrator Fee", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :administrator, :value => 31.00, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:administrator) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "American Health Data Institute", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ahdi, :value => 5.00, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ahdi) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "UR / Case Management", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :urcm, :value => 3.25, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:urcm) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "PPO Network ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ppo, :value => 17.00, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ppo) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Stop Loss Coordination", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :stop_loss, :value => 1.25, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:stop_loss) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Teladoc $0 Consult Fee", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :teladoc_consult, :value => 3.85, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:teladoc_consult) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Lab Card", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :lab_card, :value => 1.00, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:lab_card) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "HIPAA/COBRA ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :hipaa, :value => 1.10, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:hipaa) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Broker Fee", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :broker_fee, :value => 30.00, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:broker_fee) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Other", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :other_fee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:other_fee) %>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+  <br>
+  <hr/>
+  <br>
+  <table>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Plan Platform ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :plan_platform, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:plan_platform) %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Specific Deductable ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :specific_deductable, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:specific_deductable) %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Maximum Annual Reimbursement ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :mar, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:mar) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Maximum Lifetime Reimbursement ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :mlr, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:mlr) %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <hr>
+  <h3> Specific Premium Contract Benefits</h3>
+  <hr>
+  <br>
+  <table align="center">
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee Count ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :employee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:employee) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee Fee ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inempfee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inempfee) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee & Spouse Count ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ee_sp, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ee_sp) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee / Spouse ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inee_spfee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inee_spfee) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee & Children Count ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ee_child, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ee_child) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee / Child ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inee_childfee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inee_childfee) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Family Count ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :family, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:family) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Family ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :infamilyfee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:infamilyfee) %>
+        </div>
+      </td>
+ 
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Transplant ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :intransplant, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:intransplant) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Monthly Accomodation ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inmac, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inmac) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Aggregate Premium ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inagg_premium, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inagg_premium) %>
+        </div>
+      </td>
+
+    </tr>
+ </table>
+  <br>
+  <hr>
+  <h3>Aggregate Coverage: Contract Benefits</h3>
+  <br>
+  <hr>
+  <br>
+  <table align="center">
+ 
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee Count", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :employee2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:employee2) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee Fee ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inempfee2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inempfee2) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee & Spouse Count", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ee_sp2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ee_sp2) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee / Spouse ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inee_spfee2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inee_spfee2) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Employee & Children Count", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :ee_child2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:ee_child2) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Employee / Child ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :inee_childfee2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:inee_childfee2) %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Family Count", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :family2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:family2) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+        <%= f.label "Family ", :class => 'control-label col-lg-3' %>
+        <div class="col-lg-6">
+          <%= f.text_field :infamilyfee2, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:infamilyfee2) %>
+        </div>
+      </td>
+
+    </tr>
+
+
+  </table>
+  <br>
+  
+  <br>
+  
+  <table align="center">
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Start Up Fee ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :startup, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:startup) %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "SBC Fee ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :sbc, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:sbc) %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Annual Fee", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :annual_fee, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:annual_fee) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="form-group">
+        <%= f.label "Plan Document Fee ", :class => 'control-label col-lg-4' %>
+        <div class="col-lg-6">
+          <%= f.text_field :plan_document, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:plan_document) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <h3 style="font-weight: bold;">Contingencies</h3>
+    </tr>
+    <tr>
+      <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+
+          <%= f.collection_check_boxes :cont_ids, Cont.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>  
+        </div>
+      </div>
+   </div>
+  </tr>
+    
+  </table>
+  <table>
+    <tr>
+      <h3 style="font-weight: bold;">Other Contingencies</h3>
+    </tr>
+    <tr>
+      <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+
+          <%= f.collection_check_boxes :other_ids, Other.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>  
+        </div>
+      </div>
+   </div>
+  </tr>
+  </table>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary', :style => 'color: #ffffff;' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                rfps_path, :class => 'btn btn-danger', :style => 'color: #ffffff;' %>
+    </div>
+    </div>
+    
+  
+<% end %>

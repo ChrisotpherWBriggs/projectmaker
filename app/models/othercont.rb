@@ -1,0 +1,2 @@
+class Othercont < ApplicationRecord
+end

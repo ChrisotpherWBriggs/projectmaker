@@ -39,7 +39,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 group :production do
   gem 'pg'
 end

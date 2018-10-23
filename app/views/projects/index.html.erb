@@ -31,7 +31,7 @@
         <td><%= project.term_date %></td>-->
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      project_path(project), :class => 'btn btn-primary btn-xs', style: 'color:#ffffff;' %>
+                      project_path(project), :class => 'btn btn-success btn-xs', style: 'color:#f7f5ee;' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_project_path(project), :class => 'btn btn-warning btn-xs', style: 'color:#000000;' %>
           <% if current_user.admin? %>
@@ -39,7 +39,7 @@
                       project_path(project),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger', style: 'color:#ffffff;' %>
+                      :class => 'btn btn-xs btn-danger', style: 'color:#f7f5ee;' %>
           <% end %>
         </td>
       </tr>
@@ -49,5 +49,5 @@
 <% if current_user.admin? %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_project_path,
-            :class => 'btn btn-success', style: 'color:#ffffff;' %>
+            :class => 'btn btn-success', style: 'color:#f7f5ee;' %>
 <% end %>

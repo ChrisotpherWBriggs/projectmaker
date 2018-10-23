@@ -1,0 +1,25 @@
+<%- model_class = Other -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @other.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
+  <dd><%= @other.body %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:from) %>:</strong></dt>
+  <dd><%= @other.from %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:through) %>:</strong></dt>
+  <dd><%= @other.through %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              others_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_other_path(@other), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              other_path(@other),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

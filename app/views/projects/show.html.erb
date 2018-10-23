@@ -68,11 +68,11 @@
       <dt><srtong>Documents:</srtong></dt>
       <dd><%= render @project.documents %></dd>
       <dd><%=link_to "Upload Documents", new_document_path, class: "btn btn-success", style: "color:#ffffff; font-weight: bold;" %>
-      <% end %>
+      <% end %> 
     </dl>
 
     <%= link_to t('.back', :default => t("helpers.links.back")),
-                  projects_path, :class => 'btn btn-primary', style: 'color:#ffffff;'  %>
+                  projects_path, :class => 'btn btn-success', style: 'color:#ffffff;'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                   edit_project_path(@project), :class => 'btn btn-warning', style: 'color:#000000;' %>
     <% if current_user.admin? %>

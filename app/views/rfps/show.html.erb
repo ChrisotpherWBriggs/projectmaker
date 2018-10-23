@@ -1,0 +1,327 @@
+<%- model_class = Rfp -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<div class="row" align="center">
+<table class="horizontal">
+	<tr>
+		<th class="rfp" ><strong>Name: </strong></th>
+			<td class="rfp" colspan="3"><%= @rfp.name %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Prepared By:</strong></th>
+			<td class="rfp"><%= @rfp.prep %></td>
+		<th class="rfp"><strong> Carrier: </strong></th>
+			<td class="rfp"><%= @rfp.carrier %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Network: </strong></th>
+			<td class="rfp"><%= @rfp.network %></td>
+		<th class="rfp"><strong> PBM: </strong></th>
+			<td class="rfp"><%= @rfp.pbm %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Effective Date: </strong></th>
+			<td class="rfp" colspan="3"><%= @rfp.eff_date %></td>
+	</tr>
+	<tr>
+		<th class="rfp" style="background-color: gray; color: white;"><h4><strong>Benefits: </strong></h4></th>
+		<th class="rfp"  style="background-color: #008c91; color: white;"><h4><strong>&nbsp;&nbsp;In Network: &nbsp;&nbsp; </strong></h4></th>
+		<th class="rfp"  style="background-color: #008c91; color: white;"><h4><strong>&nbsp;&nbsp;Out of Network: &nbsp;&nbsp;</strong></h4></th>	
+	</tr>
+	<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Deductable: </strong></th>
+		<td class="rfp"><%= @rfp.indeductable %></td>
+		<td class="rfp"><%= @rfp.outdeductable %></td>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Coinsurance: </strong></th>
+		<td class="rfp"><%= @rfp.incoinsurance %></td>
+		<td class="rfp"><%= @rfp.outcoinsurance %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Out of Pocket: </strong></th>
+		<td class="rfp"><%= @rfp.inoop %></td>
+		<td class="rfp"><%= @rfp.outoop %></td>
+	</tr>	
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Office Visit: </strong></th>
+		<td class="rfp"><%= @rfp.inoffice_visit %></td>
+		<td class="rfp"><%= @rfp.outoffice_visit %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Specialist: </strong></th>
+		<td class="rfp"><%= @rfp.inspecialist %></td>
+		<td class="rfp"><%= @rfp.outspecialist %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Lab & X-ray: </strong></th>
+		<td class="rfp"><%= @rfp.inlab_xray %></td>
+		<td class="rfp"><%= @rfp.outlab_xray %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Preventative: </strong></th>
+		<td class="rfp"><%= @rfp.inpreventative %></td>
+		<td class="rfp"><%= @rfp.outpreventative %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Teladoc: </strong></th>
+		<td class="rfp"><%= @rfp.inteladoc %></td>
+		<td class="rfp"><%= @rfp.outteladoc %></td>
+	</tr>
+		</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Urgent Care: </strong></th>
+		<td class="rfp"><%= @rfp.inurgent_care %></td>
+		<td class="rfp"><%= @rfp.outurgent_care %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp" style="background-color: gray; color:white;"><strong>Prescription: </strong></th>
+		<td class="rfp"><%= @rfp.inprescription %></td>
+		<td class="rfp"><%= @rfp.outprescription %></td>
+	</tr>
+	</tr>
+		<tr>
+		<th class="rfp"  style="background-color: gray; color:white;"><strong>Emergency Room: </strong></th>
+		<td class="rfp"><%= @rfp.iner %></td>
+		<td class="rfp"><%= @rfp.outer %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Administrator: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.administrator) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>American Helth Data Institute: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.ahdi) %></td>
+	</tr>	
+	<tr>
+		<th class="rfp"><strong>UR / Case Management: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.urcm) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>PPO Network: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.ppo) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Stop Loss Coordination: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.stop_loss) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Teladoc $0 Consult Fee: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.teladoc_consult) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Lab Card: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.lab_card) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Hipaa / Cobra: </strong></th>
+		<td class="rfp" colspan="2" align="center"><%= number_to_currency(@rfp.hipaa) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Broker Fee: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.broker_fee) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Other Fee: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@rfp.other_fee) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Total Monthly Admin: </strong></th>
+		<td class="rfp"  colspan="2" align="center"><%= number_to_currency(@total) %></td>
+	</tr>
+
+</table>
+<hr class="separate">
+<table>
+	<tr>
+		<th class="rfp"><strong>Plan Platform: </strong></th>
+		<td class="rfp"><%= number_to_currency(@rfp.plan_platform) %></td> 
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Specific Deductable: </strong></th>
+		<td class="rfp"><%= number_to_currency(@rfp.specific_deductable) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Maximum Annual Reimbursement: </strong></th>
+		<td class="rfp"><%= number_to_currency(@rfp.mar) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Maximum Lifetime Reimbursement: </strong></th>
+		<td class="rfp"><%= number_to_currency(@rfp.mlr) %></td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<th class="header" colspan="3"><h4> Specific Premium Contract Benefits</h4></th>
+	</tr>
+	<tr>
+		<td class="header" colspan="2">&nbsp;</td>
+		<td class="header">Option 1</td>
+		
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Employee</strong></th>
+		<td class="rfp"><%= @rfp.employee %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inempfee) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Employee & Spouse</strong></th>
+		<td class="rfp"><%= @rfp.ee_sp %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inee_spfee) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Employee & Child</strong></th>
+		<td class="rfp"><%= @rfp.ee_child %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inee_childfee) %></td>
+	</tr>
+		<tr>
+		<th class="rfp"><strong>Family</strong></th>
+		<td class="rfp"><%= @rfp.family %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.infamilyfee) %></td>
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2">Total Specific Monthly Premium: &nbsp;</th>
+		<td class="rfp"><%= number_to_currency(@tpsp) %></td>
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2">Monthly Fixed Cost Total: &nbsp;</th>
+		<td class="rfp"><%= number_to_currency(@mfct) %></td>
+	</tr>
+	<tr>
+		<th class="header" colspan="4"><h4> Aggregate Coverage: Contract Benefits</h4></th>
+	</tr>
+		<tr>
+		<th class="rfp"><strong>Employee</strong></th>
+		<td class="rfp"><%= @rfp.employee2 %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inempfee2) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Employee & Spouse</strong></th>
+		<td class="rfp"><%= @rfp.ee_sp2 %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inee_spfee2) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Employee & Child</strong></th>
+		<td class="rfp"><%= @rfp.ee_child2 %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.inee_childfee2) %></td>
+		
+	</tr>
+		<tr>
+		<th class="rfp"><strong>Family</strong></th>
+		<td class="rfp"><%= @rfp.family2 %></td>
+		<td class="rfp"><%= number_to_currency(@rfp.infamilyfee2) %></td>
+		
+	</tr>
+		<tr>
+		<th class="rfp" colspan="2">Total Specific Monthly Aggregate Liability: &nbsp;</th>
+		<td class="rfp"><%= number_to_currency(@tmag) %></td>
+
+	</tr>
+	<tr>
+		<th class="header" colspan="4"></th>
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Total Annual Fixed Cost: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@tafc) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Total Annual Aggregate Liability: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@taal) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Est Plan Maximum Liability: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@epmt) %></td>
+
+	</tr>
+	<tr>
+		<th class="header" colspan="4"></th>
+	</tr>
+	<tr>
+		<th class="header" colspan="4"><h4>Cost Summary</h4></th>
+	</tr>
+	<tr>
+		<th class="header" colspan="4"></th>
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Employee: &nbsp; &nbsp;</strong></th>
+			<td class="rfp"> <%= number_to_currency(@empsum) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Employee & Spouse: &nbsp; &nbsp;</strong></th>
+			<td class="rfp"> <%= number_to_currency(@ee_spsum) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Employee & Child: &nbsp; &nbsp;</strong></th>
+			<td class="rfp"> <%= number_to_currency(@ee_childsum) %></td>
+
+	</tr>
+	<tr>
+		<th class="rfp" colspan="2"><strong>Family: &nbsp; &nbsp;</strong></th>
+			<td class="rfp"> <%= number_to_currency(@familysum) %></td>
+
+
+	</tr>
+</table>
+
+<h3 class="header"> The additional fees listed below are not included in the rates above: &nbsp;</h3>
+<table>
+	<tr>
+		<th class="rfp"><strong>Start Up Fee: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@rfp.startup) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>SBC Fee: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@rfp.sbc) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Annual Fee: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@rfp.annual_fee) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Plan Document Fee: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@rfp.plan_document) %></td>
+	</tr>
+	<tr>
+		<th class="rfp"><strong>Total: &nbsp;&nbsp;</strong></th>
+			<td class="rfp"><%= number_to_currency(@sumtotal) %></td>
+	</tr>
+</table>
+<hr class="separate">
+<table>
+	<tr>
+		<th><h3>Contingencies</h3></th>
+		<td><%= render @rfp.conts %></td>
+	</tr>
+</table>
+<hr class ="separate">
+<table>
+	<tr>
+		<th><h3>Other Contingencies</h3></th>
+		<td style="text-align: center; font-weight:bold;">This proposal is subject to the following, <%= render @rfp.others %>
+	</tr>
+</table>
+
+
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              rfps_path, :class => 'btn btn-success', :style => "color: #ffffff;"  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_rfp_path(@rfp), :class => 'btn btn-warning', :style => "color: #000000;" %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              rfp_path(@rfp),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger', :style => "color: #ffffff" %>

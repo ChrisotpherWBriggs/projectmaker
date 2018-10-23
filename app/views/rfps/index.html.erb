@@ -1,0 +1,36 @@
+<%- model_class = Rfp -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rfps.each do |rfp| %>
+      <tr>
+        <td><%= link_to rfp.id, rfp_path(rfp) %></td>
+        <td><%= rfp.name %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      rfp_path(rfp), :class => 'btn btn-success btn-xs', :style => 'color: #ffffff;' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_rfp_path(rfp), :class => 'btn btn-warning btn-xs', :style => 'color: #000000;' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      rfp_path(rfp),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger', :style => 'color: #ffffff;' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_rfp_path,
+            :class => 'btn btn-success', :style => 'color: #ffffff;' %>

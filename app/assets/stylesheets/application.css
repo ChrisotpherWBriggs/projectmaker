@@ -16,6 +16,7 @@
  */
 body {
 	font-family: 'Raleway', sans-serif;
+	background-color: #f7f5ee;
 }
  .badgelink a:link{ color: #ffffff; }
  .badgelink	a:visited { color: #ffffff; }
@@ -37,4 +38,22 @@ body {
 
 .left-padding {
   padding-left: 15px !important;
+}
+
+.rfp {
+	border: thin outset black;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+.separate {
+	border: thick outset #008c91;
+}
+
+.header {
+	border: thin outset black;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #008c91;
+	color: white;
 }
